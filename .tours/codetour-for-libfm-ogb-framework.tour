@@ -1,0 +1,31 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "CodeTour for libfm-OGB-framework",
+  "steps": [
+    {
+      "file": "Python/main.py",
+      "description": "All runs are executed with the hyperparameters and dataparts selected in the config file. For this the config-dict is loaded into each module as gloable variable to give all functions access to the key parameters.",
+      "line": 18
+    },
+    {
+      "file": "Python/main.py",
+      "description": "In the following, the general structure of the program is briefly explained before the individual steps are described in more detail. As it is conventional, the main function in the main-module contains the general program flow. Individual sections can be switched on and off to speed up the process.",
+      "line": 22
+    },
+    {
+      "file": "Python/main.py",
+      "description": "First, the data must be generated. For this purpose, there are different modules that take over different sub-functions and call each other. The basic idea is: If the data exists, it is copied into the libfm order. Otherwise they are created and stored in the data and libfm folder. Which data parts are created depends of course again on the config file.",
+      "line": 47
+    },
+    {
+      "file": "Python/main.py",
+      "description": "libfm is executed by creating a console in python and executing the desired commands. For this reason, the various commands should be stored in the file before execution. For the structure of the commands consult the libfm manual.",
+      "line": 60
+    },
+    {
+      "file": "Python/main.py",
+      "description": "libfm generates prediction files that can be evaluated to determine the quality of the model and its performance compared to the OGB leaderboard.",
+      "line": 64
+    }
+  ]
+}

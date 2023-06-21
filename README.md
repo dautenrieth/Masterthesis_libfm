@@ -2,7 +2,7 @@
 
 This repository contains a framework that facilitates the loading of graphs from the [Open Graph Benchmark (OGB)](https://ogb.stanford.edu/) and training them using the [libFM](https://github.com/srendle/libfm) library.
 
-A faster and more efficent way of training models solely within python can be found in the [myFM based Repository](https://github.com/dautenrieth/Masterthesis_myfm) or in the [fastFM based Repository](https://github.com/dautenrieth/Masterthesis_fastfm)
+A faster and more efficent way of training models solely within python can be found in the [myFM based Repository](https://github.com/dautenrieth/Masterthesis_myfm) or in the [fastFM based Repository](https://github.com/dautenrieth/Masterthesis_fastfm).
 
 ## Installation
 
