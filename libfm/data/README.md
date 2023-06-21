@@ -1,0 +1,2 @@
+## data folder
+In the data folder, the generated data files are stored. For this purpose, new folders with configuration-specific names are created. These contain all generated, converted and transposed data. If a run with a previously executed configuration is selected, the files are copied from the folder into the libfm folder, where they can then be used by libfm.

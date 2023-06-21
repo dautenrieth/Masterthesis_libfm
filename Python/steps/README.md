@@ -1,0 +1,2 @@
+## steps folder
+In this folder the RMSE values of training and test data are stored in files with the execution date. These values can then be used for visualizations. This corresponds to a condensed version of the csv file created by libfm (which contains significantly more data).

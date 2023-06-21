@@ -1,1 +1,2 @@
-libfm should be downloaded on the original github page
+## libfm folder
+In this folder the exe files of the libfm program should be stored. These should contain libfm.exe, transpose.exe and convert.exe. The Python program executes the commands via the console in this folder. At the beginning of each run the data is (created and) copied into this folder. Of course existing data will be deleted before, because they are permanently stored in the data folder.

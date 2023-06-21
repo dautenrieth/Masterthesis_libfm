@@ -1,0 +1,2 @@
+## neighborhood_data folder
+This folder is used to store calculated neighborhood ratios. The method was implemented to make recalculations redundant. However, since reading the file probably takes as much time as the matrix multiplications in the other software functions (fastfm/myfm-based Implementations), this function is considered obsolete.
