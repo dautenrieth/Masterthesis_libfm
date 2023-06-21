@@ -1,0 +1,4 @@
+libFM -task r -train train -test test -dim "1,1,8" -iter 100 -method als -regular "0,0,1" -init_stdev 0.1 -validation valid -out test.pred -verbosity 1 -cache_size 100000000
+libFM -task r -train train -test test -dim "1,1,8" -iter 100 -method sgd -learn_rate 0.01 -regular "0,0,0.01" -init_stdev 0.1 -validation valid -out test.pred -verbosity 1 -cache_size 100000000
+libFM -task r -train train -test test -dim "1,1,8" -iter 100 -method sgda -learn_rate 0.01 -regular "0,0,0.01" -init_stdev 0.1 -validation valid -out test.pred -verbosity 1 -cache_size 100000000
+libFM -task r -train train -test test -dim "1,1,8" -iter 100 -method mcmc -validation valid -out test.pred -verbosity 1 -cache_size 100000000 -meta groups.groups -rlog rlog.csv
