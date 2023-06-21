@@ -1,3 +1,10 @@
+"""
+This module is responsible for generating the data.
+The functions here generate the negative samples and create the basic data structure.
+The creation of the individual rows is then performed by functions from the data_arts module.
+These functions are called from within this module.
+"""
+
 import random
 from ogb.linkproppred import PygLinkPropPredDataset
 from pathlib import Path

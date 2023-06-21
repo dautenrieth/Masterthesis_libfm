@@ -1,3 +1,8 @@
+"""
+The functions in this module each create a line for the data files.
+A line here represents a string that contains the information of an edge (nodes).
+"""
+
 from pathlib import Path
 import json
 import time, torch
@@ -12,13 +17,11 @@ import numpy as np
 
 from common_neighborhood import CN, CN_array
 
-## TODO:
-# - Sanitiy check for loaded neighborhood data
-# - Check if nodes are in a row
-# - Check if nodes start at 0 or 1
-
 
 def weights_to_line(weights, index):
+    """
+    lines should start with the weight of the edge
+    """
     # Add Weight at the beginning
     if weights is None:
         line = f"{0} "
@@ -29,6 +32,9 @@ def weights_to_line(weights, index):
 
 
 def embeddings_to_line(line, edge, edge_emb, FeatureCounter, first_run, groupinfo=None):
+    """
+    Use embeddings as feauters
+    """
     # edge = [node1, node2]
     # edge to node
     node1, node2 = edge[0], edge[1]
@@ -68,6 +74,9 @@ def embeddings_to_line(line, edge, edge_emb, FeatureCounter, first_run, groupinf
 
 
 def ids_to_line(line, edge, FeatureCounter, number_of_nodes, first_run, groupinfo=None):
+    """
+    Use NodeIds as features. Edge Node are one else zero.
+    """
     if first_run:
         logger.info(
             f"Features {FeatureCounter}-{FeatureCounter+number_of_nodes}: Node IDs"
@@ -101,35 +110,9 @@ def neighborhood_to_line(
     groupinfo=None,
     loaded_data=None,
 ):
-    node = str(int(node))
-    # Log features
-    if first_run:
-        logger.info(
-            f"Features {FeatureCounter}-{FeatureCounter+number_of_nodes}: Neighborhood of edge nodes"
-        )
-
-    # Find out if nodes are neighbors of edge nodes and add to line
-    for neighbor_node in loaded_data[node]:
-        line += f"{FeatureCounter+int(neighbor_node)}:1 "
-    FeatureCounter += number_of_nodes
-
-    # Add groupinfos to groupinfo list
-    if first_run:
-        if groupinfo is not None:
-            groupinfo = add_groupinfo(groupinfo, number_of_nodes)
-
-    return line, FeatureCounter, groupinfo
-
-
-def recent_neighborhood_to_line(
-    line,
-    node,
-    FeatureCounter,
-    number_of_nodes,
-    first_run,
-    groupinfo=None,
-    loaded_data=None,
-):
+    """
+    Add neighborhod of one node as feature
+    """
     node = str(int(node))
     # Log features
     if first_run:
@@ -151,6 +134,9 @@ def recent_neighborhood_to_line(
 
 
 def neighborhood_data_loader(edge_set, number_of_nodes, config):
+    """
+    Load neighborhood data from file and save in dict
+    """
     start_time = time.time()
     # Set the path to the folder containing the JSON file
     file_path = Path(
@@ -182,6 +168,9 @@ def neighborhood_data_loader(edge_set, number_of_nodes, config):
 
 
 def add_groupinfo(groupinfo, number_elements):
+    """
+    Adds groupinfo by adding information to the groupinfo array
+    """
     groupinfo[1].extend([str(groupinfo[0]) for i in range(number_elements)])
     groupinfo[0] += 1
 
@@ -191,6 +180,9 @@ def add_groupinfo(groupinfo, number_elements):
 def common_neighborhood_to_line(
     line, FeatureCounter, first_run, edges, s_matrix, groupinfo=None
 ):
+    """
+    Add the number of total common neighbors as a feature
+    """
     score = CN(s_matrix, edges)
 
     line += f"{FeatureCounter}:{score} "
@@ -215,6 +207,9 @@ def neighborhood_binary_to_line(
     groupinfo,
     binary=True,
 ):
+    """
+    Add binary neighborhood data as feature
+    """
     CN_b_array = CN_array(s_matrix, edge, binary=binary)
     for index in range(len(CN_b_array.data)):
         line += f"{FeatureCounter+CN_b_array.indices[index]}:{CN_b_array.data[index]} "
@@ -233,6 +228,9 @@ def neighborhood_binary_to_line(
 
 
 def SumAdamic_to_line(line, FeatureCounter, first_run, edge, nx_graph, groupinfo):
+    """
+    Add Adamic adar as feautre
+    """
     u, v = edge[0] - 1, edge[1] - 1
 
     # Check if u and v are in the graph
@@ -265,11 +263,9 @@ def resource_allocation_to_line(
     line, FeatureCounter, first_run, edge, s_matrix, groupinfo
 ):
     """
+    Add Resource Allocation as feautre
     cite: [Predicting missing links via local information](https://arxiv.org/pdf/0901.0553.pdf)
-    Code from: https://github.com/CUAI/Edge-Proposal-Sets
-    :param adj_matrix: Compressed Sparse Row matrix
-    :param link_list: torch tensor list of links, shape[m, 2]
-    :return: RA similarity for each link
+    Code adapted from: https://github.com/CUAI/Edge-Proposal-Sets
     """
 
     w = 1 / s_matrix.sum(axis=0)

@@ -1,3 +1,7 @@
+"""
+This module contains the program flow and calls the other modules.
+"""
+
 from ogb.linkproppred import PygLinkPropPredDataset
 import concurrent.futures
 import numpy as np

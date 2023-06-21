@@ -24,8 +24,43 @@
     },
     {
       "file": "Python/main.py",
-      "description": "libfm generates prediction files that can be evaluated to determine the quality of the model and its performance compared to the OGB leaderboard.",
+      "description": "libfm generates prediction files that can be evaluated to determine the quality of the model and its performance compared to the OGB leaderboard. The results will be saved in an Excel-file called Runs.xlsx",
       "line": 64
+    },
+    {
+      "file": "Python/config.ini",
+      "description": "The config file contains all important parameters and selection options. Furthermore the folder names and the paths are defined in this file. ",
+      "line": 3
+    },
+    {
+      "file": "Python/datamanager.py",
+      "description": "The data is generated only if it does not already exist. For this the data folder in the libfm folder is checked. If the files do not exist the data generation module is called.",
+      "line": 19
+    },
+    {
+      "file": "Python/data_generation.py",
+      "description": "This function generates all data: training, test, validation. To do this, the various options are queried and the individual functions for the data parts are called (see next step). When the data has been generated, it is converted and transposed. The data are then stored in an Oder which contains the abbreviations of the data parts as well as of the graph",
+      "line": 35
+    },
+    {
+      "file": "Python/data_parts.py",
+      "description": "Each data option has a function that generates a line (or row). These functions are called many times by the data_generation module [number of edges] until a file in libfm format is created.",
+      "line": 34
+    },
+    {
+      "file": "Python/evaluator.py",
+      "description": "This function calls all available prediction files and passes them to the evaluation function. The returned metric is then analyzed with the others and the result is saved.",
+      "line": 107
+    },
+    {
+      "file": "Python/utils.py",
+      "description": "This module collects various auxiliary functions that are (can be) used by different modules.",
+      "line": 2
+    },
+    {
+      "file": "Python/main.py",
+      "description": "Hopefully this has given a small overview of how the basic structure of the program looks like and how the modules are called. To understand what each folder is used for, see the ReadMe files.\r\nHave fun testing!",
+      "line": 76
     }
   ]
 }

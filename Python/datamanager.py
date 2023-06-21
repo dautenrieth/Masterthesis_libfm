@@ -1,5 +1,8 @@
-# This module checks if the data files selected in the config file are present and if not, generates them.
-# The data files are generated using the  data_generation.py and data_parts.py module.
+"""
+This module checks if the data files selected in the config file are present and if not, generates them.
+The data files are generated using the  data_generation.py and data_parts.py module.
+"""
+
 import shutil
 
 from logger import logging_setup

@@ -1,3 +1,9 @@
+"""
+all functions of the module deal with the evaluation.
+The predictions are put into the correct form and then evaluated by the OGB evaluator.
+The expected value is calculated as well as the averages and standard deviations.
+"""
+
 import os
 import math
 import matplotlib.pyplot as plt
